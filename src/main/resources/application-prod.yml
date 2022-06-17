@@ -1,0 +1,17 @@
+server:
+  port: 8090
+spring:
+  profiles: prod
+  datasource:
+    type: com.mysql.cj.jdbc.MysqlDataSource
+    url: jdbc:mysql://192.168.111.128:3306/hhh?
+    username: root
+    password: '!WenLei3950259'
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  type-aliases-package: com.demo.entity
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    call-setters-on-nulls: true
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

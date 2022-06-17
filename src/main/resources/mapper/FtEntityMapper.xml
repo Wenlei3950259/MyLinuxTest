@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.FtEntityMapper">
+
+    <resultMap id="BaseResultMap" type="com.demo.entity.FtEntity">
+            <id property="id" column="ID" jdbcType="VARCHAR"/>
+            <result property="createDate" column="CREATE_DATE" jdbcType="TIMESTAMP"/>
+            <result property="delFlag" column="DEL_FLAG" jdbcType="VARCHAR"/>
+            <result property="remarks" column="REMARKS" jdbcType="VARCHAR"/>
+            <result property="updateDate" column="UPDATE_DATE" jdbcType="TIMESTAMP"/>
+            <result property="createBy" column="CREATE_BY" jdbcType="VARCHAR"/>
+            <result property="updateBy" column="UPDATE_BY" jdbcType="VARCHAR"/>
+            <result property="isOpen" column="IS_OPEN" jdbcType="DECIMAL"/>
+            <result property="preTaskId" column="PRE_TASK_ID" jdbcType="VARCHAR"/>
+            <result property="state" column="STATE" jdbcType="DECIMAL"/>
+            <result property="exampleId" column="EXAMPLE_ID" jdbcType="VARCHAR"/>
+            <result property="instanceId" column="INSTANCE_ID" jdbcType="VARCHAR"/>
+            <result property="taskDefineId" column="TASK_DEFINE_ID" jdbcType="VARCHAR"/>
+            <result property="thisDealManId" column="THIS_DEAL_MAN_ID" jdbcType="VARCHAR"/>
+            <result property="isDel" column="IS_DEL" jdbcType="VARCHAR"/>
+            <result property="addSignTask" column="ADD_SIGN_TASK" jdbcType="VARCHAR"/>
+            <result property="timeOut" column="TIME_OUT" jdbcType="VARCHAR"/>
+            <result property="urge" column="urge" jdbcType="VARCHAR"/>
+            <result property="expireTime" column="expire_Time" jdbcType="TIMESTAMP"/>
+            <result property="urgeNum" column="urge_num" jdbcType="DECIMAL"/>
+            <result property="taskName" column="task_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,CREATE_DATE,DEL_FLAG,
+        REMARKS,UPDATE_DATE,CREATE_BY,
+        UPDATE_BY,IS_OPEN,PRE_TASK_ID,
+        STATE,EXAMPLE_ID,INSTANCE_ID,
+        TASK_DEFINE_ID,THIS_DEAL_MAN_ID,IS_DEL,
+        ADD_SIGN_TASK,TIME_OUT,urge,
+        expire_Time,urge_num,task_name
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from ft
+        where  ID = #{id,jdbcType=VARCHAR} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete from ft
+        where  ID = #{id,jdbcType=VARCHAR} 
+    </delete>
+    <insert id="insert" keyColumn="ID" keyProperty="id" parameterType="com.demo.entity.FtEntity" useGeneratedKeys="true">
+        insert into ft
+        ( ID,CREATE_DATE,DEL_FLAG
+        ,REMARKS,UPDATE_DATE,CREATE_BY
+        ,UPDATE_BY,IS_OPEN,PRE_TASK_ID
+        ,STATE,EXAMPLE_ID,INSTANCE_ID
+        ,TASK_DEFINE_ID,THIS_DEAL_MAN_ID,IS_DEL
+        ,ADD_SIGN_TASK,TIME_OUT,urge
+        ,expire_Time,urge_num,task_name
+        )
+        values (#{id,jdbcType=VARCHAR},#{createDate,jdbcType=TIMESTAMP},#{delFlag,jdbcType=VARCHAR}
+        ,#{remarks,jdbcType=VARCHAR},#{updateDate,jdbcType=TIMESTAMP},#{createBy,jdbcType=VARCHAR}
+        ,#{updateBy,jdbcType=VARCHAR},#{isOpen,jdbcType=DECIMAL},#{preTaskId,jdbcType=VARCHAR}
+        ,#{state,jdbcType=DECIMAL},#{exampleId,jdbcType=VARCHAR},#{instanceId,jdbcType=VARCHAR}
+        ,#{taskDefineId,jdbcType=VARCHAR},#{thisDealManId,jdbcType=VARCHAR},#{isDel,jdbcType=VARCHAR}
+        ,#{addSignTask,jdbcType=VARCHAR},#{timeOut,jdbcType=VARCHAR},#{urge,jdbcType=VARCHAR}
+        ,#{expireTime,jdbcType=TIMESTAMP},#{urgeNum,jdbcType=DECIMAL},#{taskName,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" keyColumn="ID" keyProperty="id" parameterType="com.demo.entity.FtEntity" useGeneratedKeys="true">
+        insert into ft
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">ID,</if>
+                <if test="createDate != null">CREATE_DATE,</if>
+                <if test="delFlag != null">DEL_FLAG,</if>
+                <if test="remarks != null">REMARKS,</if>
+                <if test="updateDate != null">UPDATE_DATE,</if>
+                <if test="createBy != null">CREATE_BY,</if>
+                <if test="updateBy != null">UPDATE_BY,</if>
+                <if test="isOpen != null">IS_OPEN,</if>
+                <if test="preTaskId != null">PRE_TASK_ID,</if>
+                <if test="state != null">STATE,</if>
+                <if test="exampleId != null">EXAMPLE_ID,</if>
+                <if test="instanceId != null">INSTANCE_ID,</if>
+                <if test="taskDefineId != null">TASK_DEFINE_ID,</if>
+                <if test="thisDealManId != null">THIS_DEAL_MAN_ID,</if>
+                <if test="isDel != null">IS_DEL,</if>
+                <if test="addSignTask != null">ADD_SIGN_TASK,</if>
+                <if test="timeOut != null">TIME_OUT,</if>
+                <if test="urge != null">urge,</if>
+                <if test="expireTime != null">expire_Time,</if>
+                <if test="urgeNum != null">urge_num,</if>
+                <if test="taskName != null">task_name,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=VARCHAR},</if>
+                <if test="createDate != null">#{createDate,jdbcType=TIMESTAMP},</if>
+                <if test="delFlag != null">#{delFlag,jdbcType=VARCHAR},</if>
+                <if test="remarks != null">#{remarks,jdbcType=VARCHAR},</if>
+                <if test="updateDate != null">#{updateDate,jdbcType=TIMESTAMP},</if>
+                <if test="createBy != null">#{createBy,jdbcType=VARCHAR},</if>
+                <if test="updateBy != null">#{updateBy,jdbcType=VARCHAR},</if>
+                <if test="isOpen != null">#{isOpen,jdbcType=DECIMAL},</if>
+                <if test="preTaskId != null">#{preTaskId,jdbcType=VARCHAR},</if>
+                <if test="state != null">#{state,jdbcType=DECIMAL},</if>
+                <if test="exampleId != null">#{exampleId,jdbcType=VARCHAR},</if>
+                <if test="instanceId != null">#{instanceId,jdbcType=VARCHAR},</if>
+                <if test="taskDefineId != null">#{taskDefineId,jdbcType=VARCHAR},</if>
+                <if test="thisDealManId != null">#{thisDealManId,jdbcType=VARCHAR},</if>
+                <if test="isDel != null">#{isDel,jdbcType=VARCHAR},</if>
+                <if test="addSignTask != null">#{addSignTask,jdbcType=VARCHAR},</if>
+                <if test="timeOut != null">#{timeOut,jdbcType=VARCHAR},</if>
+                <if test="urge != null">#{urge,jdbcType=VARCHAR},</if>
+                <if test="expireTime != null">#{expireTime,jdbcType=TIMESTAMP},</if>
+                <if test="urgeNum != null">#{urgeNum,jdbcType=DECIMAL},</if>
+                <if test="taskName != null">#{taskName,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.demo.entity.FtEntity">
+        update ft
+        <set>
+                <if test="createDate != null">
+                    CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+                </if>
+                <if test="delFlag != null">
+                    DEL_FLAG = #{delFlag,jdbcType=VARCHAR},
+                </if>
+                <if test="remarks != null">
+                    REMARKS = #{remarks,jdbcType=VARCHAR},
+                </if>
+                <if test="updateDate != null">
+                    UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+                </if>
+                <if test="createBy != null">
+                    CREATE_BY = #{createBy,jdbcType=VARCHAR},
+                </if>
+                <if test="updateBy != null">
+                    UPDATE_BY = #{updateBy,jdbcType=VARCHAR},
+                </if>
+                <if test="isOpen != null">
+                    IS_OPEN = #{isOpen,jdbcType=DECIMAL},
+                </if>
+                <if test="preTaskId != null">
+                    PRE_TASK_ID = #{preTaskId,jdbcType=VARCHAR},
+                </if>
+                <if test="state != null">
+                    STATE = #{state,jdbcType=DECIMAL},
+                </if>
+                <if test="exampleId != null">
+                    EXAMPLE_ID = #{exampleId,jdbcType=VARCHAR},
+                </if>
+                <if test="instanceId != null">
+                    INSTANCE_ID = #{instanceId,jdbcType=VARCHAR},
+                </if>
+                <if test="taskDefineId != null">
+                    TASK_DEFINE_ID = #{taskDefineId,jdbcType=VARCHAR},
+                </if>
+                <if test="thisDealManId != null">
+                    THIS_DEAL_MAN_ID = #{thisDealManId,jdbcType=VARCHAR},
+                </if>
+                <if test="isDel != null">
+                    IS_DEL = #{isDel,jdbcType=VARCHAR},
+                </if>
+                <if test="addSignTask != null">
+                    ADD_SIGN_TASK = #{addSignTask,jdbcType=VARCHAR},
+                </if>
+                <if test="timeOut != null">
+                    TIME_OUT = #{timeOut,jdbcType=VARCHAR},
+                </if>
+                <if test="urge != null">
+                    urge = #{urge,jdbcType=VARCHAR},
+                </if>
+                <if test="expireTime != null">
+                    expire_Time = #{expireTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="urgeNum != null">
+                    urge_num = #{urgeNum,jdbcType=DECIMAL},
+                </if>
+                <if test="taskName != null">
+                    task_name = #{taskName,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   ID = #{id,jdbcType=VARCHAR} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.demo.entity.FtEntity">
+        update ft
+        set 
+            CREATE_DATE =  #{createDate,jdbcType=TIMESTAMP},
+            DEL_FLAG =  #{delFlag,jdbcType=VARCHAR},
+            REMARKS =  #{remarks,jdbcType=VARCHAR},
+            UPDATE_DATE =  #{updateDate,jdbcType=TIMESTAMP},
+            CREATE_BY =  #{createBy,jdbcType=VARCHAR},
+            UPDATE_BY =  #{updateBy,jdbcType=VARCHAR},
+            IS_OPEN =  #{isOpen,jdbcType=DECIMAL},
+            PRE_TASK_ID =  #{preTaskId,jdbcType=VARCHAR},
+            STATE =  #{state,jdbcType=DECIMAL},
+            EXAMPLE_ID =  #{exampleId,jdbcType=VARCHAR},
+            INSTANCE_ID =  #{instanceId,jdbcType=VARCHAR},
+            TASK_DEFINE_ID =  #{taskDefineId,jdbcType=VARCHAR},
+            THIS_DEAL_MAN_ID =  #{thisDealManId,jdbcType=VARCHAR},
+            IS_DEL =  #{isDel,jdbcType=VARCHAR},
+            ADD_SIGN_TASK =  #{addSignTask,jdbcType=VARCHAR},
+            TIME_OUT =  #{timeOut,jdbcType=VARCHAR},
+            urge =  #{urge,jdbcType=VARCHAR},
+            expire_Time =  #{expireTime,jdbcType=TIMESTAMP},
+            urge_num =  #{urgeNum,jdbcType=DECIMAL},
+            task_name =  #{taskName,jdbcType=VARCHAR}
+        where   ID = #{id,jdbcType=VARCHAR} 
+    </update>
+</mapper>

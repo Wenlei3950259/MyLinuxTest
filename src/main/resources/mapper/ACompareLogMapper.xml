@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.ACompareLogMapper">
+
+    <resultMap id="BaseResultMap" type="com.demo.entity.ACompareLog">
+            <id property="id" column="id" jdbcType="VARCHAR"/>
+            <result property="createDate" column="create_date" jdbcType="TIMESTAMP"/>
+            <result property="mobile" column="mobile" jdbcType="VARCHAR"/>
+            <result property="isSend" column="is_send" jdbcType="VARCHAR"/>
+            <result property="isDel" column="is_del" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,create_date,mobile,
+        is_send,is_del,message_content,
+        oatasks,metasks
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from a_compare_log
+        where  id = #{id,jdbcType=VARCHAR} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from a_compare_log
+        where  id = #{id,jdbcType=VARCHAR} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.demo.entity.ACompareLog" useGeneratedKeys="true">
+        insert into a_compare_log
+        ( id,create_date,mobile
+        ,is_send,is_del,message_content
+        ,oatasks,metasks)
+        values (#{id,jdbcType=VARCHAR},#{createDate,jdbcType=TIMESTAMP},#{mobile,jdbcType=VARCHAR}
+        ,#{isSend,jdbcType=VARCHAR},#{isDel,jdbcType=VARCHAR},#{messageContent,jdbcType=BLOB}
+        ,#{oatasks,jdbcType=BLOB},#{metasks,jdbcType=BLOB})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.demo.entity.ACompareLog" useGeneratedKeys="true">
+        insert into a_compare_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="createDate != null">create_date,</if>
+                <if test="mobile != null">mobile,</if>
+                <if test="isSend != null">is_send,</if>
+                <if test="isDel != null">is_del,</if>
+                <if test="messageContent != null">message_content,</if>
+                <if test="oatasks != null">oatasks,</if>
+                <if test="metasks != null">metasks,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=VARCHAR},</if>
+                <if test="createDate != null">#{createDate,jdbcType=TIMESTAMP},</if>
+                <if test="mobile != null">#{mobile,jdbcType=VARCHAR},</if>
+                <if test="isSend != null">#{isSend,jdbcType=VARCHAR},</if>
+                <if test="isDel != null">#{isDel,jdbcType=VARCHAR},</if>
+                <if test="messageContent != null">#{messageContent,jdbcType=BLOB},</if>
+                <if test="oatasks != null">#{oatasks,jdbcType=BLOB},</if>
+                <if test="metasks != null">#{metasks,jdbcType=BLOB},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.demo.entity.ACompareLog">
+        update a_compare_log
+        <set>
+                <if test="createDate != null">
+                    create_date = #{createDate,jdbcType=TIMESTAMP},
+                </if>
+                <if test="mobile != null">
+                    mobile = #{mobile,jdbcType=VARCHAR},
+                </if>
+                <if test="isSend != null">
+                    is_send = #{isSend,jdbcType=VARCHAR},
+                </if>
+                <if test="isDel != null">
+                    is_del = #{isDel,jdbcType=VARCHAR},
+                </if>
+                <if test="messageContent != null">
+                    message_content = #{messageContent,jdbcType=BLOB},
+                </if>
+                <if test="oatasks != null">
+                    oatasks = #{oatasks,jdbcType=BLOB},
+                </if>
+                <if test="metasks != null">
+                    metasks = #{metasks,jdbcType=BLOB},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=VARCHAR} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.demo.entity.ACompareLog">
+        update a_compare_log
+        set 
+            create_date =  #{createDate,jdbcType=TIMESTAMP},
+            mobile =  #{mobile,jdbcType=VARCHAR},
+            is_send =  #{isSend,jdbcType=VARCHAR},
+            is_del =  #{isDel,jdbcType=VARCHAR},
+            message_content =  #{messageContent,jdbcType=BLOB},
+            oatasks =  #{oatasks,jdbcType=BLOB},
+            metasks =  #{metasks,jdbcType=BLOB}
+        where   id = #{id,jdbcType=VARCHAR}
+                like kkzi
+    </update>
+</mapper>

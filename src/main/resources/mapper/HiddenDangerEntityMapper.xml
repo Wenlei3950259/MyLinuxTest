@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.HiddenDangerEntityMapper">
+  <resultMap id="BaseResultMap" type="com.demo.entity.HiddenDangerEntity">
+    <!--@mbg.generated-->
+    <!--@Table hidden_danger-->
+    <id column="region" jdbcType="VARCHAR" property="region" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    region, `name`, mobile
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from hidden_danger
+    where region = #{region,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from hidden_danger
+    where region = #{region,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.demo.entity.HiddenDangerEntity">
+    <!--@mbg.generated-->
+    insert into hidden_danger (region, `name`, mobile
+      )
+    values (#{region,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.demo.entity.HiddenDangerEntity">
+    <!--@mbg.generated-->
+    insert into hidden_danger
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="region != null and region != ''">
+        region,
+      </if>
+      <if test="name != null and name != ''">
+        `name`,
+      </if>
+      <if test="mobile != null and mobile != ''">
+        mobile,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="region != null and region != ''">
+        #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null and name != ''">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null and mobile != ''">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demo.entity.HiddenDangerEntity">
+    <!--@mbg.generated-->
+    update hidden_danger
+    <set>
+      <if test="name != null and name != ''">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null and mobile != ''">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where region = #{region,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demo.entity.HiddenDangerEntity">
+    <!--@mbg.generated-->
+    update hidden_danger
+    set `name` = #{name,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR}
+    where region = #{region,jdbcType=VARCHAR}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update hidden_danger
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="`name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when region = #{item.region,jdbcType=VARCHAR} then #{item.name,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="mobile = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when region = #{item.region,jdbcType=VARCHAR} then #{item.mobile,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where region in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.region,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update hidden_danger
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="`name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.name != null">
+            when region = #{item.region,jdbcType=VARCHAR} then #{item.name,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="mobile = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.mobile != null">
+            when region = #{item.region,jdbcType=VARCHAR} then #{item.mobile,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where region in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.region,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into hidden_danger
+    (region, `name`, mobile)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.region,jdbcType=VARCHAR}, #{item.name,jdbcType=VARCHAR}, #{item.mobile,jdbcType=VARCHAR}
+        )
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="com.demo.entity.HiddenDangerEntity">
+    <!--@mbg.generated-->
+    insert into hidden_danger
+    (region, `name`, mobile)
+    values
+    (#{region,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}
+      )
+    on duplicate key update 
+    region = #{region,jdbcType=VARCHAR}, 
+    `name` = #{name,jdbcType=VARCHAR}, 
+    mobile = #{mobile,jdbcType=VARCHAR}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="com.demo.entity.HiddenDangerEntity">
+    <!--@mbg.generated-->
+    insert into hidden_danger
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="region != null and region != ''">
+        region,
+      </if>
+      <if test="name != null and name != ''">
+        `name`,
+      </if>
+      <if test="mobile != null and mobile != ''">
+        mobile,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="region != null and region != ''">
+        #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null and name != ''">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null and mobile != ''">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="region != null and region != ''">
+        region = #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null and name != ''">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null and mobile != ''">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+<!--auto generated by MybatisCodeHelper on 2022-06-16-->
+  <select id="findByNameAndMobile" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from hidden_danger
+    <where>
+      <if test="name != null and name != ''">
+        and `name`=#{name,jdbcType=VARCHAR}
+      </if>
+      <if test="mobile != null and mobile != ''">
+        and mobile=#{mobile,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>
