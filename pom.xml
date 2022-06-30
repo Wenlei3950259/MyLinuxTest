@@ -78,24 +78,11 @@
             <artifactId>poi-tl</artifactId>
             <version>1.8.0</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.deepoove</groupId>-->
-<!--            <artifactId>poi-tl</artifactId>-->
-<!--            <version>1.12.0</version>-->
-<!--        </dependency>-->
 
-<!--        <dependency>-->
-<!--            <groupId>org.apache.poi</groupId>-->
-<!--            <artifactId>poi</artifactId>-->
-<!--            <version>3.17</version>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash; xlsx &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.poi</groupId>-->
-<!--            <artifactId>poi-ooxml</artifactId>-->
-<!--            <version>4.1.1</version>-->
-<!--        </dependency>-->
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
 
     </dependencies>
 
