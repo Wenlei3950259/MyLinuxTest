@@ -2,7 +2,7 @@ spring:
   application:
     name: service-mybatisX
   profiles:
-    active: test
+    active: prod
 # 日志配置
 logging:
   # 日志配置文件位置

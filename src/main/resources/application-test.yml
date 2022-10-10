@@ -1,7 +1,10 @@
 server:
   port: 8080
+  servlet:
+    session:
+      timeout: 113
+#    context-path: /pic
 spring:
-  profiles: test
   datasource:
     type: com.mysql.cj.jdbc.MysqlDataSource
     url: jdbc:mysql://localhost:3306/hhh?
@@ -35,5 +38,7 @@ mybatis:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
-
+#
+#pic:
+#  dir: F:/changhong/pic/
 

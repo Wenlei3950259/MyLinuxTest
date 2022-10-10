@@ -6,6 +6,6 @@ import com.demo.entity.User;
 import java.util.Map;
 
 public interface UserService {
-    Map<String, String> login(UserDTO user);
+    Map<Object, Object> login(UserDTO user);
 
 }

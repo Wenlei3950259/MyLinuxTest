@@ -1,12 +1,11 @@
 server:
   port: 8090
 spring:
-  profiles: prod
   datasource:
     type: com.mysql.cj.jdbc.MysqlDataSource
     url: jdbc:mysql://192.168.111.128:3306/hhh?
     username: root
-    password: '!WenLei3950259'
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   redis:
     #数据库索引

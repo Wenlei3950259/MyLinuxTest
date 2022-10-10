@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.JsonMapper">
+    <resultMap id="BaseResultMap" type="com.demo.dto.DoctorDTO">
+        <!--@mbg.generated-->
+        <!--@Table `role`-->
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="lis_doctor_id" jdbcType="VARCHAR" property="lis_doctor_id" />
+        <result column="lis_doctor_name" jdbcType="VARCHAR" property="lis_doctor_name" />
+        <result column="org_name" jdbcType="VARCHAR" property="org_name" />
+        <result column="lis_org_id" jdbcType="VARCHAR" property="lis_org_id" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, lis_doctor_id, lis_doctor_name, org_name,lis_org_id
+    </sql>
+
+    <insert id="batchInsert" parameterType="java.util.List" >
+        insert into phms_lis_doctor (id, lis_doctor_id, lis_doctor_name,
+        org_name, lis_org_id)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id,jdbcType=VARCHAR}, #{item.lis_doctor_id,jdbcType=VARCHAR}, #{item.lis_doctor_name,jdbcType=VARCHAR},
+            #{item.org_name,jdbcType=VARCHAR}, #{item.lis_org_id,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

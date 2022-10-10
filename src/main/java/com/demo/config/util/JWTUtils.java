@@ -11,11 +11,11 @@ public class JWTUtils {
 
     private static final String APP_SECRET = "JDSAdGdFjJjJhGfgVvhuiUhHhJJKkHJHJhkjkHJKJKjkHJ";
 
-    public static String getToken(Map<String, String> map) {
+    public static String getToken(Map<Object, Object> map) {
         JwtBuilder builder = Jwts.builder();
 //这里可以实现外部动态传参
         map.forEach((k, v) -> {
-                    builder.claim(k, v);
+                    builder.claim(String.valueOf(k), v);
                 }
         );
         String token = builder

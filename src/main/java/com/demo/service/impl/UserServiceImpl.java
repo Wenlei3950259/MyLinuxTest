@@ -14,8 +14,8 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
     @Override
-    public Map<String, String> login(UserDTO user) {
-        Map<String, String> one = userMapper.findOne(user);
+    public Map<Object, Object> login(UserDTO user) {
+        Map<Object, Object> one = userMapper.findOne(user);
         return one;
     }
 }

@@ -18,9 +18,9 @@ public class LoginController {
     @Autowired
     UserService userService;
 
-    @PostMapping("/user/login")
-    public ResponseEntity<Map<String, String>> Login(UserDTO user) {
-        Map<String, String> UserDat = userService.login(user);
+    @PostMapping("/login")
+    public ResponseEntity<Map<Object, Object>> Login(UserDTO user) {
+        Map<Object, Object> UserDat = userService.login(user);
         String token = JWTUtils.getToken(UserDat);
         UserDat.put("token", token);
         return new ResponseEntity<>(UserDat, HttpStatus.OK);

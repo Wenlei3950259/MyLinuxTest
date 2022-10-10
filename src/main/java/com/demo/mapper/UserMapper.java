@@ -17,7 +17,7 @@ import java.util.Map;
 public interface UserMapper {
 
     @MapKey("id")
-    Map<String, String> findOne(UserDTO user);
+    Map<Object, Object> findOne(UserDTO user);
 
     int deleteByPrimaryKey(Long id);
 

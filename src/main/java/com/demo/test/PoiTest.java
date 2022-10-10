@@ -29,7 +29,7 @@ public class PoiTest {
         System.err.println(absolutePath);
         Map<String, Object> models = new HashMap<>(64);
         models.put("orgName", "测试卫生院");
-        models.put("name", "关蝴蝶");
+        models.put("name", "wenlei");
         models.put("sex", "女");
         models.put("age", "23");
         models.put("examY", "2022");
