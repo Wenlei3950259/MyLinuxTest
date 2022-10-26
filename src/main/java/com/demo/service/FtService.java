@@ -6,4 +6,5 @@ public interface FtService {
     int save(FtDTO ftDTO);
 
     int delete(String id);
+
 }

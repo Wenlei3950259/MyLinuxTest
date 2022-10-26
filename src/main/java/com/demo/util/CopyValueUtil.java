@@ -8,11 +8,10 @@ public class CopyValueUtil {
         if (record == null) {
             return null;
         }
-
         TestCrateTable testCrateTable = new TestCrateTable();
+        testCrateTable.setId(record.getId());
         testCrateTable.setCreateTime(record.getCreateTime());
         testCrateTable.setDelFlag(record.getDelFlag());
-        testCrateTable.setId(record.getId());
         return testCrateTable;
     }
 }

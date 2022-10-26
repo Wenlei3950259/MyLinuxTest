@@ -13,8 +13,17 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>mybatisX</name>
     <description>mybatisX</description>
+
+
     <properties>
         <java.version>1.8</java.version>
+
+            <maven.compiler.source>11</maven.compiler.source>
+            <maven.compiler.target>11</maven.compiler.target>
+            <wxjava-version>4.3.0</wxjava-version>
+            <lombok.version>1.18.22</lombok.version>
+            <hutool.version>5.7.22</hutool.version>
+
     </properties>
     <dependencies>
         <dependency>
@@ -123,6 +132,38 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.4</version>
+        </dependency>
+
+        <!--微信推送  -->
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-common</artifactId>
+            <version>${wxjava-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-mp</artifactId>
+            <version>${wxjava-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-core</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-http</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-json</artifactId>
+            <version>${hutool.version}</version>
         </dependency>
     </dependencies>
 
