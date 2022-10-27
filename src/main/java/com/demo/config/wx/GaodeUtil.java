@@ -13,10 +13,7 @@ import static cn.hutool.json.JSONUtil.parseObj;
  * Date 2022-08-22
  */
 public class GaodeUtil {
-    // 大家使用自己的秘钥  我的因为请求过多被封禁了
     private static final String key = "a57b8e989a8e747bf63b99ede1663bac";
-//    private static final String key = "4d9f98bee3725b7998ed59f2a656a803";
-
     private static final String GEO_API = "https://restapi.amap.com/v3/geocode/geo?key=%s&address=%s&city=%s";
     private static final String WEATHER_API = "https://restapi.amap.com/v3/weather/weatherInfo?key=%s&city=%d&extensions=%s";
 

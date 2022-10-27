@@ -11,6 +11,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class GoServiceImpl implements GoService {
+    //宝
+    public final String userId = "oPTRz6n36QYZmupHpYxCK78EXswE";
+    //我
+    public final String my = "oPTRz6p2lFAOjhwZkQoO86e1it2c";
+
     @Override
     public void send() {
         Bootstrap.init();
@@ -25,8 +30,9 @@ public class GoServiceImpl implements GoService {
         }
 
         GirlFriend girlFriend = new GirlFriend("张媛媛",
-                "四川省", "泸县", time, yima ,"1997-07-23", "2022-10-01 09:00:00", loveTalkApi.getLove(), "oPTRz6p2lFAOjhwZkQoO86e1it2c");
+                "四川省", "泸县", time, yima, "1997-07-30", "2022-10-01 09:00:00", loveTalkApi.getLove(), userId);
         Wx.sendTemplateMessage(MessageFactory.resolveMessage(girlFriend));
+        System.out.println("已发送" + time);
     }
 
     private String getYiMa() {
