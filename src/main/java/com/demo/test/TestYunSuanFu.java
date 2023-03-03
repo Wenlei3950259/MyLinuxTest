@@ -4,8 +4,10 @@ import org.apache.commons.lang3.time.DateUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class TestYunSuanFu {
     public static void main(String[] args) {
@@ -15,6 +17,7 @@ public class TestYunSuanFu {
 
         String checkDate = getDateBefore(examDate, 15);
         System.out.println(checkDate);
+        List<String> cdate = new ArrayList<>();
     }
 
     public static final String YMD = "yyyy-MM-dd";

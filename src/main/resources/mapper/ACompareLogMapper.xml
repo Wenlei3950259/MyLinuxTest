@@ -99,6 +99,5 @@
             oatasks =  #{oatasks,jdbcType=BLOB},
             metasks =  #{metasks,jdbcType=BLOB}
         where   id = #{id,jdbcType=VARCHAR}
-                like kkzi
     </update>
 </mapper>

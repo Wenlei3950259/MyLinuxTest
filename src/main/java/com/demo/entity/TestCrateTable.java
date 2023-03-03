@@ -17,7 +17,7 @@ public class TestCrateTable {
     private Date createTime;
 
     /**
-     * 是否是你爹
+     *
      */
     private String delFlag;
 

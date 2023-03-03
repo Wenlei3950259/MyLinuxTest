@@ -1,4 +1,5 @@
 package com.demo.mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.demo.entity.ACompareLog;
 import org.apache.ibatis.annotations.Mapper;
@@ -12,7 +13,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ACompareLogMapper {
 
-    int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(@Param("id") Long id);
 
     int insert(ACompareLog record);
 
@@ -22,8 +23,7 @@ public interface ACompareLogMapper {
 
     int updateByPrimaryKeySelective(ACompareLog record);
 
-    int updateByPrimaryKey(ACompareLog record);
-
+    int updateByPrimaryKey(@Param("record") ACompareLog record);
 
 
 }

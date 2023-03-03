@@ -7,8 +7,16 @@ package com.demo.config.wx;
  * Date 2022-08-22
  */
 public class GirlFriend extends Friend {
-
-    public GirlFriend(String fullName, String province, String city,String today ,String yima,String birthday, String meetTime,String loveTalk, String userId) {
-        super(fullName, province, today,yima,city, userId, birthday, meetTime,loveTalk, "女");
+//luckyNumber;
+//luckyFriend;
+//luckyColor;
+//money;
+//luckyWork;
+//summary;
+    public GirlFriend(String fullName, String province, String city, String birthday, String loveTime, String userId,
+                      String loveTalk, String luckyNumber, String luckyFriend, String luckyColor, String money, String luckyWork, String summary) {
+        super(fullName, province, city, userId, birthday, loveTime, "女",
+                loveTalk,luckyNumber,luckyFriend,luckyColor,money,luckyWork,summary);
     }
+
 }

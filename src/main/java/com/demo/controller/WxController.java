@@ -19,9 +19,10 @@ public class WxController {
     @Autowired(required = false)
     GoService goService;
 
-    @GetMapping("/wx")
+    @GetMapping("/send")
     //每天早上7:30点
-    @Scheduled(cron = "0 30 07 * * ?")
+//    @Scheduled(cron = "0 30 07 * * ?")
+    @Scheduled(fixedDelay = 3000)
     public void send() {
         goService.send();
     }
