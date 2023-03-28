@@ -1,6 +1,7 @@
 package com.demo.config.wx;
 
 import cn.hutool.core.util.StrUtil;
+import com.demo.config.util.ColorUtil;
 import me.chanjar.weixin.mp.bean.template.WxMpTemplateData;
 import me.chanjar.weixin.mp.bean.template.WxMpTemplateMessage;
 
@@ -22,6 +23,7 @@ public class MessageFactory {
                 .templateId(StrUtil.emptyToDefault(friend.getTemplateId(), Bootstrap.TEMPLATE_ID))
                 .data(buildData(friend))
                 .build();
+
     }
 
     public static WxMpTemplateMessage resolveMessageNew(NewHot newHot) {
@@ -76,35 +78,35 @@ public class MessageFactory {
         WeatherInfo weather = GaodeUtil.getNowWeatherInfo(getAdcCode(friend.getProvince(), friend.getCity()));
         RandomAncientPoetry.AncientPoetry ancientPoetry = RandomAncientPoetry.getNext();
         ArrayList<WxMpTemplateData> list = new ArrayList<>();
-
+        ColorUtil.getColor();
 
         //你叫{{friendName.DATA}}
         list.add(TemplateDataBuilder.builder().name("friendName").value(friend.getFullName()).color("#F00000").build());
         //今年{{howOld.DATA}}
-        list.add(TemplateDataBuilder.builder().name("howOld").value(friend.getHowOld().toString()).color("#99CC33").build());
+        list.add(TemplateDataBuilder.builder().name("howOld").value(friend.getHowOld().toString()).color(ColorUtil.getColor()).build());
         //距离下一次生日{{nextBirthday.DATA}}天
-        list.add(TemplateDataBuilder.builder().name("nextBirthday").value(friend.getNextBirthdayDays()).color("#FF6600").build());
+        list.add(TemplateDataBuilder.builder().name("nextBirthday").value(friend.getNextBirthdayDays()).color(ColorUtil.getColor()).build());
         //宝宝我们已经认识{{nextMemorialDay.DATA}}天了
-        list.add(TemplateDataBuilder.builder().name("nextMemorialDay").value(friend.getNextMemorialDay()).color("#990033").build());
+        list.add(TemplateDataBuilder.builder().name("nextMemorialDay").value(friend.getNextMemorialDay()).color(ColorUtil.getColor()).build());
         //今天的{{province.DATA}}{{city.DATA}}天气
-        list.add(TemplateDataBuilder.builder().name("province").value(friend.getProvince()).color("#6699CC").build());
-        list.add(TemplateDataBuilder.builder().name("city").value(friend.getCity()).color("#99CCFF").build());
+        list.add(TemplateDataBuilder.builder().name("province").value(friend.getProvince()).color(ColorUtil.getColor()).build());
+        list.add(TemplateDataBuilder.builder().name("city").value(friend.getCity()).color(ColorUtil.getColor()).build());
         //当前天气{{weather.DATA}}
-        list.add(TemplateDataBuilder.builder().name("weather").value(weather.getWeather()).color("#00B42A").build());
+        list.add(TemplateDataBuilder.builder().name("weather").value(weather.getWeather()).color(ColorUtil.getColor()).build());
         //当前气温{{temperature.DATA}}
-        list.add(TemplateDataBuilder.builder().name("temperature").value(weather.getTemperature()).color("#722ED1").build());
+        list.add(TemplateDataBuilder.builder().name("temperature").value(weather.getTemperature()).color(ColorUtil.getColor()).build());
         //风力描述{{winddirection.DATA}}
-        list.add(TemplateDataBuilder.builder().name("winddirection").value(weather.getWinddirection()).color("#F5319D").build());
+        list.add(TemplateDataBuilder.builder().name("winddirection").value(weather.getWinddirection()).color(ColorUtil.getColor()).build());
         //风力级别{{windpower.DATA}}
-        list.add(TemplateDataBuilder.builder().name("windpower").value(weather.getWindpower()).color("#3491FA").build());
+        list.add(TemplateDataBuilder.builder().name("windpower").value(weather.getWindpower()).color(ColorUtil.getColor()).build());
         //空气湿度{{windpower.DATA}}
-        list.add(TemplateDataBuilder.builder().name("humidity").value(weather.getHumidity()).color("#66CC00").build());
+        list.add(TemplateDataBuilder.builder().name("humidity").value(weather.getHumidity()).color(ColorUtil.getColor()).build());
 
         //双子座今日各个运势
         //幸运数字 {luckyNumber}
-        list.add(TemplateDataBuilder.builder().name("luckyNumber").value(friend.getLuckyNumber()).color("#CD0000").build());
+        list.add(TemplateDataBuilder.builder().name("luckyNumber").value(friend.getLuckyNumber()).color(ColorUtil.getColor()).build());
         //幸运星座 {luckyFriend}
-        list.add(TemplateDataBuilder.builder().name("luckyFriend").value(friend.getLuckyFriend()).color("#33CC99").build());
+        list.add(TemplateDataBuilder.builder().name("luckyFriend").value(friend.getLuckyFriend()).color(ColorUtil.getColor()).build());
         //幸运颜色 {luckyColor}
 
         String luckyColor = friend.getLuckyColor();
@@ -112,19 +114,19 @@ public class MessageFactory {
         color = eqColor(luckyColor, color);
         list.add(TemplateDataBuilder.builder().name("luckyColor").value(friend.getLuckyColor()).color(color).build());
         //财运  {money}
-        list.add(TemplateDataBuilder.builder().name("money").value(friend.getMoney()).color("#EEEE00").build());
+        list.add(TemplateDataBuilder.builder().name("money").value(friend.getMoney()).color(ColorUtil.getColor()).build());
         //工作幸运指数 {luckyWork}
-        list.add(TemplateDataBuilder.builder().name("luckyWork").value(friend.getLuckyWork()).color("#663305").build());
+        list.add(TemplateDataBuilder.builder().name("luckyWork").value(friend.getLuckyWork()).color(ColorUtil.getColor()).build());
         //运势 {summary}
-        list.add(TemplateDataBuilder.builder().name("summary").value(friend.getSummary()).color("#9933CC").build());
+        list.add(TemplateDataBuilder.builder().name("summary").value(friend.getSummary()).color(ColorUtil.getColor()).build());
 
 
         //古诗
-        list.add(TemplateDataBuilder.builder().name("author").value(ancientPoetry.getAuthor()).color("#009966").build());
-        list.add(TemplateDataBuilder.builder().name("origin").value(ancientPoetry.getOrigin()).color("#009966").build());
-        list.add(TemplateDataBuilder.builder().name("content").value(ancientPoetry.getContent()).color("#009966").build());
+        list.add(TemplateDataBuilder.builder().name("author").value(ancientPoetry.getAuthor()).color(ColorUtil.getColor()).build());
+        list.add(TemplateDataBuilder.builder().name("origin").value(ancientPoetry.getOrigin()).color(ColorUtil.getColor()).build());
+        list.add(TemplateDataBuilder.builder().name("content").value(ancientPoetry.getContent()).color(ColorUtil.getColor()).build());
         //和宝宝说油腻腻的话鸭{}
-        list.add(TemplateDataBuilder.builder().name("loveTalk").value(friend.getLoveTalk()).color("ff6699").build());
+        list.add(TemplateDataBuilder.builder().name("loveTalk").value(friend.getLoveTalk()).color(ColorUtil.getColor()).build());
         return list;
     }
 

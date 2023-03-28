@@ -126,7 +126,7 @@ public class CpachaUtil {
 		BufferedImage rotateVcodeImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		Graphics2D g2d = rotateVcodeImage.createGraphics();
 		//填充背景色
-		g2d.setColor(new Color(246, 240, 250));
+		g2d.setColor(new Color(73, 101, 83));
 		g2d.fillRect(0, 0, width, height);
 		if(drawline){
 			drawDisturbLine(g2d);
