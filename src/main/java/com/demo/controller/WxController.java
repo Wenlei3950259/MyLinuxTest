@@ -21,11 +21,20 @@ public class WxController {
 
     @GetMapping("/send")
     //每天早上7:30点
-    @Scheduled(cron = "0 30 07 * * ?")
+//    @Scheduled(cron = "0 44 07 * * ?")
 //    @Scheduled(cron = "0 03 09 * * ?")
 //    @Scheduled(fixedDelay = 3000)
     public void send() {
         goService.send();
     }
 
+
+    @GetMapping("/send2")
+    //每天早上7:30点
+//    @Scheduled(fixedDelay = 3000)
+    public void send2() {
+
+
+        System.out.println("chongchongc");
+    }
 }

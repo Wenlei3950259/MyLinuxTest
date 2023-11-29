@@ -32,3 +32,16 @@ mybatis:
     call-setters-on-nulls: true
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+mqtt:
+  hostUrl: tcp://uc5148ac.ala.cn-hangzhou.emqxsl.cn
+  username: wen
+  password: 123
+  port: 8883
+  client-id: mqttx_ad99427f
+  cleanSession: true
+  reconnect: true
+  timeout: 30
+  keepAlive: 60
+  defaultTopic: test
+  isOpen: true
+  qos: 0

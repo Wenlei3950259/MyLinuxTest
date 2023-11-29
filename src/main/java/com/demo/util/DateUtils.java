@@ -30,9 +30,9 @@ public class DateUtils {
     public static final String YMDHMS = "yyyy-MM-dd HH:mm:ss";
 
     public static final String YMD = "yyyy-MM-dd";
-
+    
     public static final String YMD1 = "yyyyMMdd";
-
+    
     public static final String YMDKMS = "y/M/d k:mm:ss";
 
     /**
@@ -55,7 +55,6 @@ public class DateUtils {
 
     /**
      * 计算传入的日期 examDate 是否再当前日期的 day 日以内
-     *
      * @param examDate
      * @param day
      * @return
@@ -71,9 +70,22 @@ public class DateUtils {
         return false;
     }
 
+    public static boolean isSameYear(String time1, String time2) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            Date date1 = sdf.parse(time1);
+            Date date2 = sdf.parse(time2);
+            int year1 = date1.getYear() + 1900;
+            int year2 = date2.getYear() + 1900;
+            return year1 == year2;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     /**
      * 计算年龄
-     *
      * @param nowDate
      * @param birthDay
      * @return
@@ -87,7 +99,6 @@ public class DateUtils {
 
     /**
      * 根据身份证获取生日
-     *
      * @param cardId
      * @return
      */
@@ -110,15 +121,14 @@ public class DateUtils {
     }
 
 
+
     /**
      * Date转换成String类型，格式为"yyyy-MM-dd"
-     *
      * @param date
      * @return
      */
     public static String date2Str(Date date) {
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         if (date != null) {
             String str = sdf.format(date);
             return str;
@@ -127,6 +137,7 @@ public class DateUtils {
     }
 
     /**
+     *
      * @param date
      * @param format
      * @return
@@ -149,7 +160,6 @@ public class DateUtils {
 
     /**
      * 得到几天后的时间
-     *
      * @param d
      * @param day
      * @return
@@ -181,7 +191,6 @@ public class DateUtils {
 
     /**
      * Date转换成String类型，格式为"yyyy-MM-dd"
-     *
      * @param date
      * @return
      */
@@ -196,7 +205,6 @@ public class DateUtils {
 
     /**
      * String转换成Date，格式为"yyyy-MM-dd" 或者 "yyyy-MM-dd HH:mm:ss".
-     *
      * @param str "yyyy-MM-dd" / "yyyy-MM-dd HH:mm:ss"
      * @return
      */
@@ -227,7 +235,6 @@ public class DateUtils {
 
     /**
      * 将返回的字符串"/Date(1460908800000)/"，转成Date类型
-     *
      * @param str
      * @return
      */
@@ -256,7 +263,6 @@ public class DateUtils {
 
     /**
      * 将返回的字符串"/Date(1460908800000)/"，转成String类型
-     *
      * @param str
      * @return Sring类型的日期
      */
@@ -306,23 +312,23 @@ public class DateUtils {
 
     }
 
-    public static int getQuarter(String dateStr) {
+    public static int getQuarter(String dateStr){
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date date = dateFormat.parse(dateStr);
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
             int month = calendar.get(Calendar.MONTH) + 1;
-            if (month >= 1 && month <= 3) {
+            if (month >= 1 && month <= 3){
                 return 1;
             }
-            if (month >= 4 && month <= 6) {
+            if (month >= 4 && month <= 6){
                 return 2;
             }
-            if (month >= 7 && month <= 9) {
+            if (month >= 7 && month <= 9){
                 return 3;
             }
-            if (month >= 10 && month <= 12) {
+            if (month >= 10 && month <= 12){
                 return 4;
             }
         } catch (ParseException e) {
@@ -333,7 +339,6 @@ public class DateUtils {
 
     /**
      * 根据传入格式格式化日期
-     *
      * @param str
      * @return
      */
@@ -350,7 +355,6 @@ public class DateUtils {
 
     /**
      * 将yyyy-MM-dd格式的字符串日期转化成/Date(long)/类型
-     *
      * @param date
      * @return
      */
@@ -369,11 +373,10 @@ public class DateUtils {
     }
 
     /**
-     * 被比较时间是否是 当前时间的n天内 （此处时间为n - n+1天）
-     *
-     * @param date  当前时间
+     * 被比较时间是否是 当前时间的n天内 （此处时间为n - n+1天） 
+     * @param date 当前时间
      * @param parse 被比较时间的时间戳
-     * @param n
+     * @param  n
      * @return
      */
     public static boolean isNDaysAgo(Date date, long parse, int n) {
@@ -391,7 +394,6 @@ public class DateUtils {
 
     /**
      * 获取指定日期上增加指定年数之后的日期
-     *
      * @param spDate
      * @param plusYear
      * @return
@@ -407,7 +409,6 @@ public class DateUtils {
     /**
      * 将日期格式字符串加年后返回
      * eg: 2018-08-10 + 1年=2019-08-09
-     *
      * @param dateStr
      * @param years
      * @return
@@ -447,7 +448,6 @@ public class DateUtils {
 
     /**
      * 自定义日期转换
-     *
      * @param date
      * @param dateStr
      * @return
@@ -464,7 +464,6 @@ public class DateUtils {
     /**
      * 从当前时间减去指定年数 仅用于年龄转换为最大出生日期计算
      * 返回yyyy-MM-dd格式字符串
-     *
      * @param years
      * @return
      */
@@ -476,9 +475,10 @@ public class DateUtils {
     }
 
 
+
+
     /**
      * 比较两个时间先后，  date1>date2  va=1; date1=date2  va=0; date1<date2  va=-1;
-     *
      * @param date1
      * @param date2
      * @return
@@ -496,7 +496,6 @@ public class DateUtils {
 
     /**
      * 比较两个时间先后，  date1>date2  va=1; date1=date2  va=0; date1<date2  va=-1;
-     *
      * @param date1 开始时间
      * @param date2 结束时间
      * @return true：在范围之间  false：不在范围内
@@ -524,7 +523,6 @@ public class DateUtils {
 
     /**
      * 计算起止年限之间的年份数 向上取整
-     *
      * @param startTime
      * @param endTime
      * @return
@@ -555,11 +553,10 @@ public class DateUtils {
         }
         return y;
     }
-
+    
     /**
      * 将传入时间字符串 转换为指定格式时间字符串
      * 仅支持 "yyyy-MM-dd" "yyyy-MM-dd HH:mm:ss" "yyyyMMdd" "y/M/d k:mm:ss" 4种格式
-     *
      * @param dateString
      * @param pattern
      * @return
@@ -588,11 +585,10 @@ public class DateUtils {
                 }
             }
         }
-        return theDate != null ? theSdf.format(theDate) : "";
+        return theDate != null? theSdf.format(theDate):"";
     }
-
     //ISO日期转换为UTC日期
-    public static XMLGregorianCalendar dateToXml(Date date) {
+    public static XMLGregorianCalendar dateToXml(Date date){
         GregorianCalendar cal = new GregorianCalendar();
         cal.setTime(date);
         XMLGregorianCalendar gc = null;
@@ -603,13 +599,13 @@ public class DateUtils {
         }
         return gc;
     }
-
+    
     //UTC日期转换为ISO日期  
-    public static Date xmlToDate(XMLGregorianCalendar gc) {
+    public static Date xmlToDate(XMLGregorianCalendar gc){
         GregorianCalendar ca = gc.toGregorianCalendar();
         return ca.getTime();
     }
-
+    
     public static Calendar dateToCalendar(Date date) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);

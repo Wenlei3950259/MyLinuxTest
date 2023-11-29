@@ -2,8 +2,9 @@ spring:
   application:
     name: service-mybatisX
   profiles:
-    active: prod
+    active: test
 # 日志配置
 logging:
   # 日志配置文件位置
   config: classpath:logback-dev.xml
+

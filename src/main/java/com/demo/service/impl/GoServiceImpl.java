@@ -42,10 +42,10 @@ public class GoServiceImpl implements GoService {
         String summary = jsonObject.get("summary").toString();
 
 
-        GirlFriend girlFriend = new GirlFriend("李远丽", "重庆", "荣昌", "1998-05-25"
+        GirlFriend girlFriend = new GirlFriend("李远丽", "重庆", "荣昌", "1998-07-12"
                 , "2023-01-26", she,
                 s, luckyNumber, luckyFriend, luckyColor, money, luckyWork, summary);
-        GirlFriend girlFriend2 = new GirlFriend("李远丽", "重庆", "荣昌", "1998-05-25"
+        GirlFriend girlFriend2 = new GirlFriend("李远丽", "重庆", "荣昌", "1998-07-12"
                 , "2023-01-26", me,
                 s, luckyNumber, luckyFriend, luckyColor, money, luckyWork, summary);
         Date date = new Date();
@@ -53,7 +53,7 @@ public class GoServiceImpl implements GoService {
         System.out.println(s1 + " 执行");
         Wx.sendTemplateMessage(MessageFactory.resolveMessage(girlFriend));
         Wx.sendTemplateMessage(MessageFactory.resolveMessage(girlFriend2));
-
+        
     }
 
 }
